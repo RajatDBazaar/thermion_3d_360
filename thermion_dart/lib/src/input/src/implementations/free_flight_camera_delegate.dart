@@ -95,7 +95,7 @@ class FreeFlightInputHandlerDelegate implements InputHandlerDelegate {
     // Apply rotation
     if (_queuedRotationDelta.length2 > 0.0) {
       double deltaX = _queuedRotationDelta.x * rotationSensitivity;
-      double deltaY = _queuedRotationDelta.y * rotationSensitivity;
+      double deltaY = -_queuedRotationDelta.y * rotationSensitivity;
 
       Quaternion yawRotation = Quaternion.axisAngle(_up, -deltaX);
       Quaternion pitchRotation = Quaternion.axisAngle(_right, -deltaY);

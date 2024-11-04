@@ -105,7 +105,8 @@ class FixedOrbitRotateInputHandlerDelegate implements InputHandlerDelegate {
       var distToTarget = (newPosition - target).length;
 
       // if we somehow overshot the minimum distance, reset the camera to the minimum distance
-      if (distToTarget >= minimumDistance) {
+    //  if (distToTarget >= minimumDistance) {
+      if (distToTarget >= 0) {
         currentPosition = newPosition;
         // Calculate view matrix
         forward = (currentPosition - target).normalized();
@@ -119,7 +120,7 @@ class FixedOrbitRotateInputHandlerDelegate implements InputHandlerDelegate {
       }
     } else if (_queuedRotationDelta.length != 0) {
       double rotateX = _queuedRotationDelta.x * rotationSensitivity;
-      double rotateY = _queuedRotationDelta.y * rotationSensitivity;
+      double rotateY = -_queuedRotationDelta.y * rotationSensitivity;
 
       var modelMatrix = await viewer.getCameraModelMatrix();
 
